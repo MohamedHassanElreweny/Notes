@@ -1,0 +1,92 @@
+<div id="profile" class="position-absolute top-0 start-0 w-100">
+  <div class="container-fluid box">
+      <div class="add d-flex justify-content-end">
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add">Add Note</button>
+      </div>
+      <div class="no-notes text-muted w-50" *ngIf="notfound">no notes found</div>
+      <div class="row">
+        <div *ngFor="let item of notesArr" class="col-md-3 col-sm-6">
+          <div class="note">
+            <div class="dropdown d-flex justify-content-end mt-1">
+              <button class="btn btn-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa-solid fa-ellipsis-vertical"></i>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item text-info" (click)="getid(item._id)" data-bs-toggle="modal" data-bs-target="#editbtn">Edit <i class="fa-solid fa-square-pen text-info"></i></a></li>
+                <li><a class="dropdown-item text-danger" (click)="getid(item._id)" data-bs-toggle="modal" data-bs-target="#deletebtn">Delete <i class="fa-solid fa-trash text-danger"></i></a></li>
+              </ul>
+            </div>
+            <div class="content text-dark">
+              <h3 class="text-center">{{item.title}}</h3>
+              <p class="p-2">{{item.desc}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+
+<!-- add modal -->
+<div class="modal fade" id="add" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-dark" id="exampleModalLabel">Keep your important notes</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form [formGroup]="noteform" class="p-3" (ngSubmit)="addnote(noteform)">
+        <div class="modal-body text-dark">
+            <input type="text" class="form-control my-3" placeholder="Title" formControlName="title">
+            <textarea cols="30" rows="10" class="form-control" placeholder="Type your Note" formControlName="desc"></textarea>
+        </div>
+        <div class="modal-footer">
+          <button [disabled]="noteform.invalid" type="submit" class="btn btn-primary">add</button>
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- delete modal -->
+<div class="modal fade" id="deletebtn" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-dark" id="exampleModalLabel">Are you sure?</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center text-info">
+        Do you really want to delete ? <br>
+process cannot be undone
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="deleteNote()">Delete</button>
+        <button type="button" class="btn btn-info" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- edit modal -->
+<!-- add modal -->
+<div class="modal fade" id="editbtn" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-dark" id="exampleModalLabel">Keep your important notes</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form [formGroup]="noteupdate" class="p-3" (ngSubmit)="updateNote(noteupdate)">
+        <div class="modal-body text-dark">
+            <input type="text" class="form-control my-3" placeholder="Title" formControlName="title">
+            <textarea cols="30" rows="10" class="form-control" placeholder="Type your Note" formControlName="desc"></textarea>
+        </div>
+        <div class="modal-footer">
+          <button [disabled]="noteupdate.invalid" type="submit" class="btn btn-primary">Update</button>
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

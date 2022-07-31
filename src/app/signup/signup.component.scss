@@ -1,0 +1,26 @@
+#signup{
+  height: 100vh;
+  background-color: #343a40!important;
+}
+.fname,.lname{
+  width: 48%;
+}
+.name-con{
+  display: flex;
+  justify-content: space-between;
+}
+@media (max-width:792px){
+  .fname,.lname{
+    width: 100%;
+    margin-bottom: 16px;
+  }
+  .name-con{
+    display: block;
+  }
+}
+form{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
