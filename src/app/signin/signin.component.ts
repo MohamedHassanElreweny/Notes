@@ -47,4 +47,10 @@ export class SigninComponent implements OnInit {
     })
   }
 
+
+  fieldTextType: boolean=false;
+  toggleFieldTextType() {
+    this.fieldTextType = !this.fieldTextType;
+  }
+
 }

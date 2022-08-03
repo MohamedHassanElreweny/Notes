@@ -1,12 +1,12 @@
 <div id="profile" class="position-absolute top-0 start-0 w-100">
-  <div class="container-fluid box">
+  <div class="container box">
       <div class="add d-flex justify-content-end">
         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add">Add Note</button>
       </div>
       <div class="no-notes text-muted w-50" *ngIf="notfound">no notes found</div>
       <div class="row">
-        <div *ngFor="let item of notesArr" class="col-md-3 col-sm-6">
-          <div class="note">
+        <div *ngFor="let item of notesArr" class="col-md-3 col-sm-6 col-12">
+          <div class="note bg-danger">
             <div class="dropdown d-flex justify-content-end mt-1">
               <button class="btn btn-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="fa-solid fa-ellipsis-vertical"></i>
@@ -16,7 +16,7 @@
                 <li><a class="dropdown-item text-danger" (click)="getid(item._id)" data-bs-toggle="modal" data-bs-target="#deletebtn">Delete <i class="fa-solid fa-trash text-danger"></i></a></li>
               </ul>
             </div>
-            <div class="content text-dark">
+            <div class="content text-light">
               <h3 class="text-center">{{item.title}}</h3>
               <p class="p-2">{{item.desc}}</p>
             </div>

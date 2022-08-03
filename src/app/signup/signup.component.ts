@@ -41,7 +41,12 @@ export class SignupComponent implements OnInit {
         }
       }
     })
+  }
 
+
+  fieldTextType: boolean=false;
+  toggleFieldTextType() {
+    this.fieldTextType = !this.fieldTextType;
   }
 
 }

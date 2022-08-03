@@ -9,15 +9,26 @@
         </div>
       </div>
       <p class="text-danger p-0 mt-1">{{errorMessage}}</p>
-      <div class="pass mb-3">
-        <input type="password" formControlName="password" class="form-control" placeholder="Enter Your Password">
-        <div class="err" *ngIf="loginform.get('password')?.errors && loginform.get('password')?.touched">
-          <p class="text-danger p-1 m-0" *ngIf="loginform.get('password')?.errors?.['required']">password is required</p>
-          <p class="text-danger p-1 m-0" *ngIf="loginform.get('password')?.errors?.['pattern']">password must contain at least eight characters
-            at least one number
-            and both lower and uppercase letters
-            and special characters</p>
-        </div>
+      <div class="pass input-group mb-3">
+        <input [type]="fieldTextType ? 'text' : 'password'" formControlName="password" class="form-control" placeholder="Enter Your Password">
+        <div class="input-group-append">
+          <span class="input-group-text h-100">
+            <i class="fa"
+            [ngClass]="{
+              'fa-eye-slash': !fieldTextType,
+              'fa-eye': fieldTextType
+            }"
+            (click)="toggleFieldTextType()"></i>
+          </span>
+       </div>
+
+      </div>
+      <div class="err mb-2" *ngIf="loginform.get('password')?.errors && loginform.get('password')?.touched">
+        <p class="text-danger p-1 m-0" *ngIf="loginform.get('password')?.errors?.['required']">password is required</p>
+        <p class="text-danger p-1 m-0" *ngIf="loginform.get('password')?.errors?.['pattern']">password must contain at least eight characters
+          at least one number
+          and both lower and uppercase letters
+          and special characters</p>
       </div>
       <button [disabled]="loginform.invalid" type="submit" class="btn btn-primary w-100">Login</button>
     </form>
