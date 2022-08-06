@@ -6,7 +6,7 @@
       <div class="no-notes text-muted w-50" *ngIf="notfound">no notes found</div>
       <div class="row">
         <div *ngFor="let item of notesArr" class="col-md-3 col-sm-6 col-12">
-          <div class="note bg-danger">
+          <div class="note">
             <div class="dropdown d-flex justify-content-end mt-1">
               <button class="btn btn-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="fa-solid fa-ellipsis-vertical"></i>
@@ -69,7 +69,6 @@ process cannot be undone
 </div>
 
 <!-- edit modal -->
-<!-- add modal -->
 <div class="modal fade" id="editbtn" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
 import { AuthService } from '../auth.service';
 import { NoteServiceService } from '../note-service.service';
 
@@ -30,6 +29,7 @@ export class NotesComponent implements OnInit {
   userdata:any;
   token:any;
   notfound:boolean=false;
+  notesArr:any[]=[];
 
   constructor(private _AuthService:AuthService , private _NoteService:NoteServiceService , private _Router:Router) {
     try{
@@ -62,10 +62,8 @@ export class NotesComponent implements OnInit {
         }
       }
     })
-
+    this.noteform.reset();
   }
-
-  notesArr:any[]=[];
 
   getNotes(){
     let notesobj={
@@ -87,6 +85,9 @@ export class NotesComponent implements OnInit {
 
   getid(id:any){
     this.globalId = id;
+    let noteforUpdate=this.notesArr.find(x=>x._id==this.globalId);
+    this.noteupdate.get('title')?.setValue(noteforUpdate.title);
+    this.noteupdate.get('desc')?.setValue(noteforUpdate.desc);
   }
 
   deleteNote(){

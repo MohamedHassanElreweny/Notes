@@ -12,7 +12,7 @@
 
 .note{
   height: 13rem;
-  // background-color: aqua;
+  background-color: #248B8B;
   overflow-y: auto;
   margin-bottom: 1rem;
   box-shadow: 5px 5px 7px rgb(33 33 33 / 80%);
@@ -44,4 +44,7 @@ body{
   text-align: center;
   border-radius: .6rem;
   margin: 0 auto;
+}
+h3,p{
+  color:#EBFBFF;
 }
