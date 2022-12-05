@@ -4,8 +4,6 @@ import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 
 declare var $:any;
-
-
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',

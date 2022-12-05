@@ -10,6 +10,7 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { NavComponent } from './nav/nav.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http'
+
 @NgModule({
   declarations: [
     AppComponent,

@@ -8,7 +8,8 @@ import { Observable } from 'rxjs';
 })
 export class NoteServiceService {
 
-  baseurl:string='https://routeegypt.herokuapp.com/';
+  baseurl:string="https://sticky-note-fe.vercel.app/";
+  // baseurl:string='https://routeegypt.herokuapp.com/';
   constructor(private _HttpClient:HttpClient) { }
 
   token=localStorage.getItem('userinfo');
@@ -34,5 +35,4 @@ export class NoteServiceService {
   getAllNotes(data:any):Observable<any>{
     return this._HttpClient.post(this.baseurl+'getUserNotes',data);
   }
-
 }
